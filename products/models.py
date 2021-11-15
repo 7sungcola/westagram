@@ -15,9 +15,23 @@ class Category(models.Model):
     class Meta:
         db_table = 'categories'
 
-class Product(models.Model):
+class Drink(models.Model):
     name        = models.CharField(max_length=100)
     category    = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'products'
+        db_table = 'drinks'
+
+
+class Allergen(models.Model):
+    name        = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'allergens'
+
+class Image_URL(models.Model):
+    image_url   = models.CharField(max_length=400)
+    drink       = models.ForeignKey('Drink', on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'image_urls'
